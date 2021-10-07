@@ -1,0 +1,30 @@
+---
+title: shubham oulkar
+author: Alison Hill
+date: '2021-10-07'
+slug: shubham-oulkar
+categories: []
+tags: [demo post]
+subtitle: 'demo post check'
+summary: ''
+authors: []
+lastmod: '2021-10-07T11:33:50+05:30'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r}
+summary(airquality)
+str(airquality)
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(airquality,aes(x=Month,y=Solar.R))+
+  geom_col()
+```
