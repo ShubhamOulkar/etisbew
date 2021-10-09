@@ -1,0 +1,179 @@
+---
+title: 'demo '
+author: shubham oulkar
+date: '2021-10-09'
+slug: covid19
+categories:
+  - R
+tags:
+  - plot
+  - R Markdown
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-10-09T19:05:12+05:30'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+```{r}
+library(plotly)
+library(htmlwidgets)
+library(IRdisplay)
+trend_products_2<-read.csv("G:\\Covid-19 impact on Digital Learning\\output csv files\\engagement index for products.csv")
+exp_3<- plot_ly(trend_products_2,
+              type = 'scatter',
+              mode = 'lines',
+              width = 800,
+              hight = 300,
+              transforms = list(
+                list(
+                  type = 'filter',
+                  target = ~state,
+                  operation = 'in',
+                  value = unique(trend_products_2$state),
+                  title = 'select state'
+                )
+              ),
+              text = ~paste('week: ', time)
+)%>%
+  add_trace(x = ~time, y = ~GoogleDocs, name = 'Google Docs') %>%
+  add_trace(x = ~time, y = ~GoogleClassroom, name = 'Google Classroom') %>%
+  add_trace(x = ~time, y = ~GoogleDrive, name = 'Google Drive') %>%
+  add_trace(x = ~time, y = ~GoogleForms, name = 'Google Forms') %>%
+  add_trace(x = ~time, y = ~Kahoot, name = 'Kahoot!') %>%
+  add_trace(x = ~time, y = ~Canvas, name = 'Canvas') %>%
+  add_trace(x = ~time, y = ~TheLearningJournal, name = 'Seesaw:The Learning Journal') %>%
+  add_trace(x = ~time, y = ~Meet, name = 'Meet') %>%
+  add_trace(x = ~time, y = ~Schoology, name = 'Schoology') %>%
+  add_trace(x = ~time, y = ~YouTube, name = 'YouTube') %>%
+  layout(title = 'Statewise engagement index for each week<br><sub>for TOP 10 products',
+         legend=list(title=list(text='Click on Products'))
+         )
+options(warn = -1)
+exp_3 <- exp_3 %>%
+  layout(
+    xaxis = list(zerolinecolor = '#ffff',
+                 zerolinewidth = 2,
+                 gridcolor = 'ffff',
+                 title="Weeks in the year 2020"),
+    yaxis = list(title="Mean Engagement Index",
+                 zerolinecolor = '#ffff',
+                 zerolinewidth = 2,
+                 gridcolor = 'ffff'),
+    plot_bgcolor='#e5ecf6',
+    shapes = list(
+      list(type = "rect",
+           fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+           x0 = "24", x1 = "30", xref = "x",
+           y0 = 0, y1 = 5000, yref = "y"),
+      list(type = "rect",
+           fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+           x0 = "10", x1 = "11", xref = "x",
+           y0 = 0, y1 = 20000, yref = "y")),
+    updatemenus = list(
+      list(
+        title="Select State",
+        type = 'dropdown',
+        active = 0,
+        buttons = list(
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[1]),
+               label = unique(trend_products_2$state)[1]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[2]),
+               label = unique(trend_products_2$state)[2]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[3]),
+               label = unique(trend_products_2$state)[3]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[4]),
+               label = unique(trend_products_2$state)[4]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[5]),
+               label = unique(trend_products_2$state)[5]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[6]),
+               label = unique(trend_products_2$state)[6]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[7]),
+               label = unique(trend_products_2$state)[7]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[8]),
+               label = unique(trend_products_2$state)[8]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[9]),
+               label = unique(trend_products_2$state)[9]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[10]),
+               label = unique(trend_products_2$state)[10]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[11]),
+               label = unique(trend_products_2$state)[11]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[12]),
+               label = unique(trend_products_2$state)[12]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[13]),
+               label = unique(trend_products_2$state)[13]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[14]),
+               label = unique(trend_products_2$state)[14]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[15]),
+               label = unique(trend_products_2$state)[15]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[16]),
+               label = unique(trend_products_2$state)[16]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[17]),
+               label = unique(trend_products_2$state)[17]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[18]),
+               label = unique(trend_products_2$state)[18]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[19]),
+               label = unique(trend_products_2$state)[19]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[20]),
+               label = unique(trend_products_2$state)[20]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[21]),
+               label = unique(trend_products_2$state)[21]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[22]),
+               label = unique(trend_products_2$state)[22]),
+          list(method = "restyle",
+               args = list("transforms[0].value", unique(trend_products_2$state)[23]),
+               label = unique(trend_products_2$state)[23])
+        )
+      )
+    )
+  ) 
+#Build annotation points
+holidaypoint <- list(
+  x = 28,
+  y = 5000,
+  text = 'holidays',
+  xref = "x",
+  yref = "y",
+  showarrow = TRUE
+)
+covidpoint <-list(
+  x = 10,
+  y = 20000,
+  text = 'Covid-19 weeks',
+  xref = "x",
+  yref = "y",
+  showarrow = T,
+  font = list (family = 'Arial',
+               size = 14,
+               color = toRGB("Red"))
+)
+exp_3 <- exp_3 %>% layout (annotations = holidaypoint) %>% layout(annotations = covidpoint)
+exp_3
+```
+
